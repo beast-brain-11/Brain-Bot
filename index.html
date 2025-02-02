@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Bot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+    .visually-hidden {
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+    }
+
+    .hero-container {
+        background-color: rgba(46, 19, 201, 1);
+        display: flex;
+        max-width: 836px;
+        padding-top: 30px;
+        flex-direction: column;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    .content-wrapper {
+        z-index: 10;
+        display: flex;
+        margin-top: 14px;
+        width: 100%;
+        flex-direction: column;
+        padding: 0 31px;
+    }
+
+    .separator {
+        width: 774px;
+        max-width: 100%;
+        height: 1px;
+        border: 1px solid rgba(236, 236, 232, 1);
+    }
+
+    .main-content {
+        align-self: end;
+        margin-top: 21px;
+        width: 100%;
+        max-width: 704px;
+    }
+
+    .content-grid {
+        gap: 20px;
+        display: flex;
+    }
+
+    .text-column {
+        display: flex;
+        flex-direction: column;
+        line-height: normal;
+        width: 42%;
+        margin-left: 0px;
+    }
+
+    .text-content {
+        display: flex;
+        margin-top: 45px;
+        width: 100%;
+        flex-direction: column;
+        align-items: start;
+        font-family: Roboto, sans-serif;
+        font-weight: 500;
+    }
+
+    .heading {
+        color: rgba(0, 173, 181, 1);
+        font-size: 37px;
+        align-self: stretch;
+    }
+
+    .subheading-wrapper {
+        display: flex;
+        margin-top: 42px;
+        gap: 10px;
+        font-size: 14px;
+        color: rgba(130, 130, 130, 1);
+        font-weight: 400;
+    }
+
+    .vertical-line {
+        width: 1px;
+        height: 27px;
+        border: 1px solid rgba(51, 51, 51, 1);
+    }
+
+    .subheading {
+        flex-grow: 1;
+        margin: auto 0;
+    }
+
+    .image-column {
+        display: flex;
+        flex-direction: column;
+        line-height: normal;
+        width: 58%;
+        margin-left: 20px;
+    }
+
+    .hero-image {
+        aspect-ratio: 0.94;
+        object-fit: contain;
+        object-position: center;
+        width: 100%;
+        border-radius: 0;
+        flex-grow: 1;
+    }
+
+    .footer-gradient {
+        background-color: rgba(5, 6, 7, 0.19);
+        display: flex;
+        min-height: 98px;
+        margin-top: -23px;
+        width: 100%;
+    }
+
+    /* Wallet section styles */
+    .wallet-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    /* Exchange modal styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 400px;
+        border-radius: 8px;
+        position: relative;
+    }
+
+    .close {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close:hover {
+        color: #000;
+    }
+
+    .exchange-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .exchange-input {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    .exchange-preview {
+        color: #666;
+        font-size: 14px;
+        margin: 10px 0;
+    }
+
+    .exchange-button {
+        background-color: rgba(0, 173, 181, 1);
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-left: 10px;
+    }
+
+    .exchange-button:hover {
+        background-color: rgba(0, 153, 161, 1);
+    }
+
+    @media (max-width: 991px) {
+        .content-wrapper {
+            max-width: 100%;
+            padding: 0 20px;
+        }
+
+        .separator {
+            margin-right: 2px;
+        }
+
+        .main-content {
+            max-width: 100%;
+        }
+
+        .content-grid {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0;
+        }
+
+        .text-column {
+            width: 100%;
+        }
+
+        .text-content {
+            margin-top: 40px;
+        }
+
+        .subheading-wrapper {
+            margin-top: 40px;
+        }
+
+        .image-column {
+            width: 100%;
+        }
+
+        .hero-image {
+            margin-top: 22px;
+        }
+
+        .footer-gradient {
+            max-width: 100%;
+        }
+    }
+    </style>
+</head>
+<body>
+    <section class="hero-container">
+        <nav class="navigation" role="navigation">
+            <a href="#how-it-works" class="nav-link">How it works?</a>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#about" class="nav-link">About us</a>
+            <div class="wallet-section">
+                <button id="wallet-button" class="wallet-button" aria-label="Connect Wallet">Connect Wallet</button>
+                <button id="exchange-button" class="exchange-button" aria-label="Exchange ETH">Exchange ETH</button>
+                <div id="braincells-balance" class="braincells-balance"></div>
+            </div>
+        </nav>
+
+        <div class="content-wrapper">
+            <div class="separator" role="presentation"></div>
+            <main class="main-content">
+                <div class="content-grid">
+                    <div class="text-column">
+                        <div class="text-content">
+                            <h1 class="heading">Learn<br>new concepts<br>for each question</h1>
+                            <div class="subheading-wrapper">
+                                <div class="vertical-line" role="presentation"></div>
+                                <p class="subheading">We help you prepare for exams and quizes</p>
+                            </div>
+                            <a href="https://priaansh-flowise.hf.space/chatbot/59901554-9505-4e0d-a7cb-93deda5e7783" class="button primary-button" id="start-button" aria-label="Start solving questions">Start solving</a>
+                        </div>
+                    </div>
+                    <div class="image-column">
+                    <img loading="lazy" src="/assets/Logo without name.png" class="hero-image" alt="Brain Bot Logo" />
+                    </div>
+                </div>
+            </main>
+        </div>
+        <div class="footer-gradient" role="presentation"></div>
+    </section>
+
+    <!-- Exchange Modal -->
+    <div id="exchange-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Exchange ETH for Braincells</h2>
+            <div class="exchange-form">
+                <input 
+                    type="number" 
+                    id="eth-amount" 
+                    class="exchange-input" 
+                    placeholder="Enter ETH amount"
+                    min="0"
+                    step="0.01"
+                />
+                <p id="exchange-preview" class="exchange-preview">You will receive: 0 Braincells</p>
+                <button id="confirm-exchange" class="button primary-button">Confirm Exchange</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/js/index.js"></script>
+</body>
+</html>
