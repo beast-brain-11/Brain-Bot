@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Bot Chat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/chat.css">
+</head>
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <div class="chat-header-left">
+                <a href="index.html" class="back-button">←</a>
+                <img src="/assets/Logo with name.png" alt="Brain Bot Logo" class="logo">
+            </div>
+            <div class="chat-header-right">
+                <button id="wallet-button" class="wallet-button">Connect Wallet</button>
+                <div id="braincells-balance" class="braincells-balance"></div>
+            </div>
+        </header>
+
+        <div id="chat-messages" class="chat-messages">
+            <!-- Messages will be dynamically added here -->
+        </div>
+
+        <div class="chat-input-container">
+            <textarea 
+                id="message-input"
+                class="chat-input"
+                placeholder="Type your message..."
+                rows="1"
+                maxlength="1000"
+            ></textarea>
+            <button id="send-button" class="send-button">
+                <span>Send</span>
+                <div id="loading-spinner" class="loading-spinner" style="display: none;"></div>
+            </button>
+        </div>
+    </div>
+
+    <script type="module" src="/js/chat.js"></script>
+</body>
+</html>
